@@ -2,8 +2,9 @@
 
 const app = express();
 
+const postRoutes = require('./routes/post');
 
-//Nous donne accée au Cors de la requète(Remplace Body-parser)
+//Nous donne accées au Cors de la requète(Remplace Body-parser)
 app.use(express.json())
 
 // Access Header
@@ -14,31 +15,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/api/stuff', (req, res, next) => {
-    res.status(201).json({message: 'Ajout du Post'})
-})
-
-//Récupération des Posts
-app.get('/api/stuff', (req, res, next) => {
-    const posts = [
-        {
-            _id: 'oeihfzeoi',
-            title: 'Mon premier objet',
-            description: 'Les infos de mon premier objet',
-            imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
-            likes: 4900,
-            userId: 'qsomihvqios',
-        },
-        {
-            _id: 'oeihfzeomoihi',
-            title: 'Mon deuxième objet',
-            description: 'Les infos de mon deuxième objet',
-            imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
-            like: 2900,
-            userId: 'qsomihvqios',
-        },
-    ];
-    res.status(200).json(posts);
-});
+app.use('/api/post', postRoutes);
 
 module.exports = app;
