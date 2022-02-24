@@ -2,8 +2,9 @@
 
 const app = express();
 
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user')
 const postRoutes = require('./routes/post');
-
 //Nous donne accées au Cors de la requète(Remplace Body-parser)
 app.use(express.json())
 
@@ -15,6 +16,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
+//app.use('/api/users', userRoutes)
 
 module.exports = app;

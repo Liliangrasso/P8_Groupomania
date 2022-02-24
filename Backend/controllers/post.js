@@ -12,9 +12,12 @@ exports.getOnePost = (req, res, next) => {
 }
 
 //Modification d'un post
+
+/* Si j'ai envie
 exports.modifyPost = (req, res, next) => {
     res.status(201).json({ message: 'modifyPost' })
 }
+*/
 
 //Suppression d'un post
 exports.deletePost = (req, res, next) => {
