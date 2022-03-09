@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     bio: DataTypes.STRING,
+    firstname: DataTypes.STRING,
+    lastname: DataTypes.STRING,
+    profilePhoto: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN
   }, {
     classMethods: {

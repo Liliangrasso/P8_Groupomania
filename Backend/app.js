@@ -21,6 +21,6 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
-//app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes)
 
 module.exports = app;

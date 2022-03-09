@@ -12,7 +12,19 @@ module.exports = {
         })
     },
     parseAuthorization: function (authorization) {
-        
+        return (authorization != null) ? authorization.replace('Bearer ', '') : null;
     },
-
+    getUserId: function (authorization) {
+        //const userId = -1;
+        const token = module.exports.parseAuthorization(authorization);
+        if (token != null) {
+            try {
+                let jwtToken = jwt.verify(token, RANDOM_TOKEN_SECRET);
+                //verifie le token s'il est valide 
+                if (jwtToken != null) // si non nul
+                    userId = jwtToken.userId; // on récupére userId
+            } catch (err) { }
+        }
+        return userId;
+    }
 }
